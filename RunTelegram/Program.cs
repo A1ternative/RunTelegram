@@ -11,36 +11,31 @@ namespace RunTelegram
 	{
 		static void Main(string[] args)
 		{
-			Console.WriteLine("Укажи путь до файлика с путями телег. Путь и файл не должны соджержать пробелы!!!");
-			Console.WriteLine("Пример содержимого файлика:");
-			Console.WriteLine(@"D:\Telegrams\15901");
-			Console.WriteLine(@"D:\Telegrams\15902");
-			Console.WriteLine(@"");
-			Console.WriteLine(@"Для остановки программы нажми Ctrl+C в этом окне");
-			RunAllTelegrams(ReadPathsFromFile());
+			Console.WriteLine("Укажи путь до папки с телегами");
 
-			static List<string> ReadPathsFromFile()
+			GetCatalog();
+
+			static void GetCatalog()
 			{
-				string fileWithPaths = Console.ReadLine();
-				string[] readTgPath = File.ReadAllLines(@fileWithPaths);
-				string tgExe = @"Telegram.exe";
-				List <string> PathToTgExe = new List<string>();
+				string pathToGeneralCatalog = Console.ReadLine();
+				string[] getTelegramExe;
 
-				foreach (string path in readTgPath)
+				if (Directory.Exists(pathToGeneralCatalog))
 				{
-					PathToTgExe.Add(Path.Combine(path, tgExe));
-				}
-				return PathToTgExe;
-			}
-
-			static void RunAllTelegrams(List<string> Paths)
-			{
-				foreach (string path in Paths)
-				{
-					Process.Start(path);
-					Thread.Sleep(5000);
+					string[] Catalogs = Directory.GetDirectories(pathToGeneralCatalog);
+					foreach (string catalog in Catalogs)
+					{
+						getTelegramExe = Directory.GetFiles(@catalog, "*exe");
+						foreach (string file in getTelegramExe)
+						{
+							Console.WriteLine(getTelegramExe);
+						}
+						
+					}
 				}
 			}
+
+			
 		}
 	}
 }
