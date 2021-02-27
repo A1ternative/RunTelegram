@@ -11,7 +11,7 @@ namespace RunTelegram
 	{
 		static void Main(string[] args)
 		{
-			Console.WriteLine("Укажи путь до файлика с путями телег. Путь и файл не должны соджержать пробелы!!!");
+			Console.WriteLine("Укажи путь до файлика с путями телег. Путь и файл не должны содержать пробелы!!!");
 			Console.WriteLine("Пример содержимого файлика:");
 			Console.WriteLine(@"D:\Telegrams\15901");
 			Console.WriteLine(@"D:\Telegrams\15902");
